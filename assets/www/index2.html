@@ -31,17 +31,15 @@
 
 
 <link href="http://code.jquery.com/mobile/latest/jquery.mobile.css" rel="stylesheet" type="text/css"/>
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script src="http://code.jquery.com/mobile/latest/jquery.mobile.js"></script>
 
 <!--phonegap lib-->
-<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxS4EAxj3r95RhmnKZNjZjdA981ZIkOBY&sensor=true&language=zh"></script>-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxS4EAxj3r95RhmnKZNjZjdA981ZIkOBY&sensor=true&language=zh"></script>
 
 
 <script type="text/javascript" src="cordova-2.1.0.js"></script>
-
 <script type="text/javascript">
-
 $(document).bind("pageinit", function () {
 
 
@@ -68,6 +66,11 @@ $(document).bind("pageinit", function () {
             /*google.maps.event.addListener(map, 'center_changed', function (event) {
              map.setCenter(lat);
              });*/
+        },
+
+        function () {
+            //防止加载其他页面的时候主页面状态丢失
+
         },
 
         //描绘路线
@@ -233,10 +236,11 @@ $(document).bind("pageinit", function () {
             }
         },
 
-            function(){
-                $.mobile.loadPage('#voice');
-                $.mobile.loadPage('#photo');
-            }
+        function(){
+            $.mobile.loadPage('#voice');
+            $.mobile.loadPage('#photo');
+//                $.mobile.loadPage('#main-page');
+        }
     ];
 
 
@@ -257,56 +261,53 @@ $(document).bind("pageinit", function () {
 
 </script>
 
-
-<script type="text/javascript" charset="utf-8">
-
-
-    $(document).bind("pageinit", function(){
-
-
-
-    })
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
-
-
 </head>
 <body>
-<div data-role="page" data-title="Page Foo">
 
-    <div data-role="header" data-theme="c">
-        <a href="index.html" data-icon="plus" data-theme="c" data-transition="flip">返回</a>
-        <h1>录音demo</h1>
+<div data-role="page" id="home" data-title="记录旅途" style="background:url(http://img03.taobaocdn.com/tps/i3/T1Ee.dXohXXXc2BHQ4-450-626.jpg) no-repeat;">
+    <div data-role="header">
+        <h1>旅行</h1>
+        <a href="#main-page" id="start-jour" data-icon="check">记录旅途</a>
     </div>
-
     <div data-role="content">
 
-        <div id="content">
-            <div id="status"></div>
-
-            <input  id="btn-start" type="button" value="开始录制" data-role="none" />
-            <input  id="btn-stop" type="button" value="停止录制" data-role="none" />
-            <input  id="btn-play" type="button" value="播放" data-role="none"/>
-
-
-        </div>
+    </div>
+    <div data-role="footer" data-position="fixed" class="ui-bar">
+        <a href="index.html" data-role="button" data-icon="plus">我的旅途</a>
+        <a href="index.html" data-role="button" data-icon="arrow-u">他人路线</a>
 
     </div>
-
-
-
-
 </div>
+
+<!-- Home -->
+<div data-role="page" id="main-page" data-title="记录旅途">
+    <div data-role="header">
+        <a id="start-geo" data-role="button"  data-icon="plus">开始出发</a>
+        <div data-role="controlgroup" class="ui-btn-right" data-inline="true" data-type="horizontal">
+            <a id="gophoto" href="#photo" data-rel="dialog" data-transition="flip" data-role="button" data-icon="plus">拍照</a>
+            <a href="#voice" data-role="button"  data-icon="plus">录音</a>
+        </div>
+    </div>
+    <div data-role="content">
+    </div>
+</div>
+
+<div data-role="page" id="photo" data-title="拍照">
+    <div data-role="content" data-theme="a">
+        <h3>在当前位置, 记录照片</h3>
+        <a id="new-photo" data-role="button" data-theme="a">拍摄新照片</a>
+        <a id="select-photo" data-role="button" data-theme="a">从相册中选择</a>
+        <a href="#main-page" id="back-hand" data-role="button" data-rel="back" data-transition="slidedown" data-theme="a">返回</a>
+    </div>
+</div>
+
+<div data-role="page" id="voice" data-title="录音">
+    <div data-role="content" >
+        <a id="govoice" data-role="button" data-theme="a">开始录音</a>
+        <a data-rel="back" data-role="button">返回</a>
+    </div>
+</div>
+
+<div id="map_canvas" style="visibility:hidden;width:100%; height:100%"></div>
 </body>
 </html>
