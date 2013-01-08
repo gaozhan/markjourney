@@ -10,6 +10,10 @@
         var map;
         var positionArr = [];
 
+        var fail = function(){
+            alert('失败了，我也没办法!');
+        };
+
         /**
          * 初始化地图，返回地图实例
          */
@@ -64,9 +68,33 @@
             /**
              * 拍照
              */
-            $('#go-pic').click(function(e){
-
+            $('#MJ_GoPhoto').click(function (e) {
+                // 使用设备上的摄像头拍照，并获得Base64编码字符串格式的图像
+                navigator.camera.getPicture(function (imgUrl) {
+//                    navigator.notification.vibrate(100);
+                }, fail, {
+                    quality:50,
+                    destinationType:1,
+                    sourceType:1
+                });
             });
+
+            $('#MJ_GoPhoLib').click(function (e) {
+                //当成功得到一张照片的URI后被调用
+                navigator.camera.getPicture(function (imgUrl) {
+                }, fail, {
+                    quality:50,
+                    destinationType:1,
+                    sourceType:0
+                });
+            });
+
+            var mediaRec ;
+            $('#go-voice').click(function(e){
+                var src = "test3.mp3";
+                mediaRec = new Media(src, this.success, this.error);
+                mediaRec.startRecord();
+            })
         }
 
 
