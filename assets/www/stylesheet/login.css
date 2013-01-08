@@ -1,0 +1,33 @@
+/* 登录界面的css */
+.login .logon-logo{
+    margin: 50px auto;
+    text-align: center;
+}
+.login .entry-wrap{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    border: 1px solid #d8d7d7;
+    text-align: center;
+}
+.login .entry-wrap .entry-item a{
+    color: #ccc;
+    text-decoration: none;
+}
+.login .entry-wrap .entry-item a:hover{
+    color: #ccc;
+    text-decoration: none;
+}
+.login .entry-wrap .entry-item{
+    padding: 10px 8px;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: white;
+}
+.login .entry-wrap .entry-item.first{
+    border-radius: 8px 8px 0 0;
+}
+.login .entry-wrap .entry-item.last{
+    border-bottom: none;
+    border-radius: 0 0 8px 8px;
+}

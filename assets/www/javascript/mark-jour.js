@@ -10,7 +10,7 @@
         var map;
         var positionArr = [];
 
-        var fail = function(){
+        var fail = function () {
             alert('失败了，我也没办法!');
         };
 
@@ -19,15 +19,15 @@
          */
         function initMap() {
             return map = new google.maps.Map(document.getElementById('map_canvas'), {
-                center:new google.maps.LatLng(30.1114111, 120),
-                zoom:15,
-                mapTypeId:google.maps.MapTypeId.ROADMAP,
-                panControl:false,
-                zoomControl:true,
-                mapTypeControl:false,
-                scaleControl:false,
-                streetViewControl:false,
-                overviewMapControl:false
+                center: new google.maps.LatLng(30.1114111, 120),
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                panControl: false,
+                zoomControl: true,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                overviewMapControl: false
             });
         }
 
@@ -41,9 +41,9 @@
                 if (state.jouring == 1) {//旅途中
                     //结束旅途了
                     e.preventDefault();
-                    setTimeout(function(){
+                    setTimeout(function () {
                         $('#start-jour').attr('href', '#insureJourName');
-                    },10);
+                    }, 10);
                 } else {//没开始旅途
                     state.jouring = 0;
                 }
@@ -57,12 +57,13 @@
             });
 
 
+
             //页面状态和地图状态维护
             $('#page-go-photo').live("pagebeforehide", function (e, ui) {
-                $('#map_canvas').css({visibility:"visible"});
+                $('#map_canvas').css({visibility: "visible"});
             });
             $('#page-go-photo').live("pageshow", function (e, ui) {
-                $('#map_canvas').css({visibility:"hidden"});
+                $('#map_canvas').css({visibility: "hidden"});
             });
 
             /**
@@ -71,35 +72,63 @@
             $('#MJ_GoPhoto').click(function (e) {
                 // 使用设备上的摄像头拍照，并获得Base64编码字符串格式的图像
                 navigator.camera.getPicture(function (imgUrl) {
-//                    navigator.notification.vibrate(100);
+                    navigator.notification.vibrate(100);
                 }, fail, {
-                    quality:50,
-                    destinationType:1,
-                    sourceType:1
+                    quality: 50,
+                    destinationType: 1,
+                    sourceType: 1
                 });
             });
 
             $('#MJ_GoPhoLib').click(function (e) {
                 //当成功得到一张照片的URI后被调用
                 navigator.camera.getPicture(function (imgUrl) {
+                    navigator.notification.vibrate(100);
                 }, fail, {
-                    quality:50,
-                    destinationType:1,
-                    sourceType:0
+                    quality: 50,
+                    destinationType: 1,
+                    sourceType: 0
                 });
             });
 
-            var mediaRec ;
-            $('#go-voice').click(function(e){
-                var src = "test3.mp3";
-                mediaRec = new Media(src, this.success, this.error);
+            function guid(){
+                return +new Date().getTime();
+            }
+            var k=-1;
+
+            var src, mediaRec;
+
+            $('#s-voice').live('click',function(){
+                src = "test3456.mp3";
+                mediaRec = new Media(src, function () {
+                    console.log(111);
+                }, function () {
+                    console.log(222);
+                },function(){
+                    if(arguments[0] === 4){
+                        $('#p-voice').css('display','block');
+
+                    }
+                });
+                console.log('start luyin');
                 mediaRec.startRecord();
             })
+
+            $('#e-voice').live('click',function(){
+                mediaRec.stopRecord();
+            })
+
+            $('#p-voice').css('display','none');
+            $('#p-voice').live('click', function () {
+
+                mediaRec.play();
+            });
+
         }
 
 
         return {
-            init:function () {
+            init: function () {
                 console.log(1122);
                 initMap();
                 initOptEvent();
