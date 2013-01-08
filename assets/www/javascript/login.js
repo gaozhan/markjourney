@@ -29,7 +29,7 @@
 
     setTimeout(function(){
         $(login).trigger('finish');
-        location.href = location.href +"#mark-jour";
+
     },2000);
 
 

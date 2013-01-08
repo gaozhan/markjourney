@@ -1,0 +1,35 @@
+.routeto,.photos,.records{margin-right:10px;}
+.routeto{
+    background:url(http://img04.taobaocdn.com/tps/i4/T1GAUWXfxXXXaSQP_X-16-16.png) no-repeat;padding-left:15px;
+}
+.photos{
+    background:url(http://img01.taobaocdn.com/tps/i1/T1r8sVXiNaXXaSQP_X-16-16.png) no-repeat;padding-left:15px;
+}
+.records{
+    background:url(http://img03.taobaocdn.com/tps/i3/T1xUMVXdtbXXaSQP_X-16-16.png) no-repeat;padding-left:15px;
+}
+#wrapper {
+    position:absolute; z-index:1;
+    top:200px; bottom:0px; left:0;
+    width:100%;
+    background:#000;
+    overflow:auto;
+}
+
+#scroller {
+    position:absolute; z-index:1;
+    /*	-webkit-touch-callout:none;*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    width:100%;
+    padding:0;
+}
+.ui-listview li{
+    padding-left:40px;
+}
+.ui-btn-icon-right .ui-icon{
+    right:45px;
+}
+.ui-navbar .ui-btn-inner{
+    background-color:#ddd;
+    color:#565656;
+}
