@@ -38,13 +38,14 @@
             initMyTrip();
         });
 
-
+        $('#mark-jour').live("pageshow", function (e, ui) {
+            window.MJ.markJour.init();
+        });
 
         $(document).on("pageshow","#tour-detail", function() {
         	var o = {
         		"name": "7n"
         	};
-        	
         	MJ.detail.render(o);
     	});
         
