@@ -42,6 +42,49 @@
             window.MJ.markJour.init();
         });
 
+        window.localStorage.setItem("detail", JSON.stringify([
+            {
+                "name":"阿凡达的奇幻之旅",
+                "id": "1122334455",
+                "start_time": "2013",
+                "image": "23",
+                "position": "12",
+                "voice": "2",
+                "point":[
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 1","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150730442","position":{"Ya":20,"Za":30}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 2","imgs":"","position":{"Ya":19.999460877691355,"Za":29.99987662250487}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 3","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150742442","position":{"Ya":19.9987589148289,"Za":29.999523101875184}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 4","imgs":"","position":{"Ya":19.997908548212536,"Za":29.998230853975542}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 5","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150754445","position":{"Ya":19.99752685371404,"Za":29.996131735594986}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 6","imgs":"","position":{"Ya":19.99720397651775,"Za":29.995226267291514}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 7","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150766448","position":{"Ya":19.99631269896006,"Za":29.99511170692449}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 8","imgs":"","position":{"Ya":19.99534091115688,"Za":29.994331924886524}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 9","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150778449","position":{"Ya":19.99473648839296,"Za":29.99415107662844}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 10","imgs":"","position":{"Ya":19.994526696046492,"Za":29.992626795093656}}
+                ]
+            },
+            {
+                "name":"阿凡达的奇幻之旅",
+                "id": "1122334455",
+                "start_time": "2013",
+                "image": "23",
+                "position": "12",
+                "voice": "2",
+                "point":[
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 1","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150730442","position":{"Ya":20,"Za":30}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 2","imgs":"","position":{"Ya":19.999460877691355,"Za":29.99987662250487}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 3","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150742442","position":{"Ya":19.9987589148289,"Za":29.999523101875184}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 4","imgs":"","position":{"Ya":19.997908548212536,"Za":29.998230853975542}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 5","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150754445","position":{"Ya":19.99752685371404,"Za":29.996131735594986}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 6","imgs":"","position":{"Ya":19.99720397651775,"Za":29.995226267291514}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 7","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150766448","position":{"Ya":19.99631269896006,"Za":29.99511170692449}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 8","imgs":"","position":{"Ya":19.99534091115688,"Za":29.994331924886524}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 9","imgs":"http://img02.taobaocdn.com/tps/i2/T1qeTeXiBxXXaokqjm-70-40.gif?t=1358150778449","position":{"Ya":19.99473648839296,"Za":29.99415107662844}},
+                    {"timestamp": "Aug 24th, 15:03","text": "hello 10","imgs":"","position":{"Ya":19.994526696046492,"Za":29.992626795093656}}
+                ]
+            }
+        ]));
+
         $(document).on("pageshow","#tour-detail", function() {
         	var o = {
         		"name": "7n"
@@ -148,15 +191,11 @@
         <a href="#">退出登录</a>
     </div>
 </div>
-
 <div id="map_canvas" style="width:100%; height:100%"></div>
-
-
 <div data-role="page" id="thepage">
     <div data-role="header">
         <a href="#mytrip" data-type="button">我的旅行</a>
-        <h1>His triplist</h1>
-
+        <h1>他人旅途</h1>
     </div>
     <div data-role="content">
         <div class="content-primary">
@@ -194,7 +233,7 @@
 <div data-role="page" id="mytrip">
     <div data-role="header">
         <a href="#thepage" data-type="button">他人旅行</a>
-        <h1>His triplist</h1>
+        <h1>我的旅途</h1>
         <a href="#mark-jour" data-type="button">开始旅行</a>
     </div>
     <div data-role="content">
@@ -202,7 +241,6 @@
             <div style=" margin-top: -9px; zoom: 1; overflow: hidden;margin-bottom:5px;">
                 <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" style="float:left;width:80px;margin-right:10px;"/>
                 <h3 style="font-size:16px;">Broken Bells</h3>
-
             </div>
             <div data-role="navbar" >
                 <ul>
@@ -213,61 +251,8 @@
             </div>
             <div id="wrapper">
                 <div id="scroller">
-                    <ul data-role="listview" style="margin:0px 0px 0px -15px">
-                        <li><a href="#tour-detail">
-                            <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" />
-                            <h3>Warning</h3>
-                            <p>Hot Chip</p>
-                            <p><span class="routeto">36</span><span class="photos">36</span><span class="records">36</span></p>
-                        </a></li>
-                        <li><a href="#">
-                            <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" />
-                            <h3>Broken Bells</h3>
-                            <p>Broken Bells</p>
-                            <p><span class="routeto">36</span><span class="photos">36</span><span class="records">36</span></p>
-                        </a></li>
-                        <li><a href="#">
-                            <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" />
-                            <h3>Warning</h3>
-                            <p>Hot Chip</p>
-                            <p><span class="routeto">36</span><span class="photos">36</span><span class="records">36</span></p>
-                        </a></li>
-                        <li><a href="#">
-                            <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" />
-                            <h3>Warning</h3>
-                            <p>Hot Chip</p>
-                            <p><span class="routeto">36</span><span class="photos">36</span><span class="records">36</span></p>
-                        </a></li>
-                        <li><a href="#">
-                            <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" />
-                            <h3>Warning</h3>
-                            <p>Hot Chip</p>
-                            <p><span class="routeto">36</span><span class="photos">36</span><span class="records">36</span></p>
-                        </a></li>
-                        <li><a href="#">
-                            <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" />
-                            <h3>Broken Bells</h3>
-                            <p>Broken Bells</p>
-                            <p><span class="routeto">36</span><span class="photos">36</span><span class="records">36</span></p>
-                        </a></li>
-                        <li><a href="#">
-                            <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" />
-                            <h3>Warning</h3>
-                            <p>Hot Chip</p>
-                            <p><span class="routeto">36</span><span class="photos">36</span><span class="records">36</span></p>
-                        </a></li>
-                        <li><a href="#">
-                            <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" />
-                            <h3>Warning</h3>
-                            <p>Hot Chip</p>
-                            <p><span class="routeto">36</span><span class="photos">36</span><span class="records">36</span></p>
-                        </a></li>
-                        <li><a href="#">
-                            <img src="http://img03.taobaocdn.com/tps/i3/T1jJ3UXaleXXceHVsE-115-115.jpg" />
-                            <h3>Warning</h3>
-                            <p>Hot Chip</p>
-                            <p><span class="routeto">36</span><span class="photos">36</span><span class="records">36</span></p>
-                        </a></li>
+                    <ul data-role="listview" style="margin:0px 0px 0px -15px" class="mytrip_ul">
+
                     </ul>
                 </div>
             </div>
